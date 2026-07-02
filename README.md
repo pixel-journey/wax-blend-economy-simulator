@@ -1,235 +1,99 @@
 # wax-blend-economy-simulator — Blend Economy Simulator
 
-> **Status:** 🔒 Private (In Development) | Target Public Release: July 2026  
+> **Status:** 🔄 In Active Deep Refinement (PX Perfection Standard)  
 > **Category:** Atomic Ecosystem & Economic Modeling (WAX-Specific)  
 > **Parent Catalog:** [pixel-journey/wax-ecosystem-blueprint-catalog](https://github.com/pixel-journey/wax-ecosystem-blueprint-catalog)
+> **Benchmark Standard:** gkniftyheads-tracker quality + Pixel Journey retro-pixel excellence + PX Perfection Standard v1.0
 
-**One-sentence goal:** A simulator for modeling Atomic Blend economics, including costs, participation, reward distribution, and long-term economic impact on WAX.
-
----
-
-## 1. Overview & Goal
-
-This blueprint delivers an interactive simulator for analyzing and predicting the economics of Atomic Blends on WAX. It helps creators, analysts, and projects understand costs, participation rates, reward distribution, and long-term sustainability of blend mechanics.
-
-**Why it matters for WAX/Antelope:**
-- Blends are a powerful mechanic, but their economic impact is often poorly understood before launch.
-- A good simulator helps creators design better, more sustainable blend systems.
-- Builds directly on the blends creator blueprint with economic depth.
-
-**Target users:**
-- Collection creators designing blends
-- Game developers using crafting/blending mechanics
-- Analysts studying Atomic economy
-- Projects planning long-term tokenomics around blends
-
-**Success metrics:**
-- Accurate and insightful economic modeling
-- Clear visualizations of costs, participation, and impact
-- 95+ Lighthouse scores
-- High usefulness for creators
+**One-sentence goal:** An interactive simulator for modeling Atomic Blend economics on WAX, including costs, participation rates, reward distribution, and long-term economic impact.
 
 ---
 
-## 2. Concepts & Inspiration
+## 1. Educational Core — Why Blend Economics Matter
 
-### Core Blockchain Concepts
-- **Atomic Blends**: Combining input assets/templates into output assets with defined rules and probabilities.
-- **Economic modeling**: Calculating costs (inputs + fees), expected value, participation incentives, and long-term effects.
-- **Participation curves**: How reward rates and costs affect user behavior over time.
-- **Sustainability analysis**: Modeling inflation, deflation, and resource sinks created by blends.
+Blends are powerful, but their economic effects (costs, participation, inflation/deflation, sustainability) are often poorly understood before launch. This blueprint helps creators design better, more sustainable blend systems by making economic modeling visual, interactive, and insightful.
 
-### User Pain Points Addressed
-- Hard to predict how blends will affect collection economy before launch.
-- Lack of tools to simulate different blend parameters and their impact.
-- Creators often launch blends without understanding long-term consequences.
+### Key Concepts
 
-### Inspirations
-- Traditional: Game economy simulators, crafting system modeling tools.
-- Web3: Tokenomics simulators and economic modeling dashboards.
-- Design: Clean data visualization with parameter controls and scenario comparison.
+- **Economic Modeling**: Calculating costs, expected value, participation incentives, and long-term effects.
+- **Participation Dynamics**: How reward rates and costs influence user behavior over time.
+- **Sustainability Analysis**: Modeling resource sinks, inflation, and long-term health of the collection economy.
+- **Scenario Planning**: Comparing different blend configurations before going live.
 
-**Related Blueprints (synergy):**
-- Direct companion to `wax-blends-creator-and-visualizer` and other Atomic ecosystem tools.
-- Supports sustainable design of Atomic-based games and projects.
+### Common Challenges This Simulator Addresses
 
----
+| Challenge                              | Impact                              | How This Simulator Helps                    |
+|----------------------------------------|-------------------------------------|---------------------------------------------|
+| Launching blends without economic insight | Unsustainable or unfair systems   | Clear modeling of costs and participation   |
+| Hard to predict long-term effects      | Surprises after launch              | Scenario comparison and impact visualization|
+| Poor communication of blend economics  | Low trust                           | Visual insights and exportable reports      |
 
-## 3. Design Specifications (Pixel Journey Standards)
+### Learning Outcomes
 
-### 3.1 Visual & Interaction Design
-- **Overall layout**: Clean simulator interface with parameter controls on the left, main visualization area in the center, and scenario comparison on the right. Professional economic modeling aesthetic with clear charts and insights.
-- **Color palette**: Professional indigo with clear success, warning, and data visualization accents.
-- **Micro-interactions**: Smooth parameter changes with instant visualization updates, satisfying scenario comparisons.
-- **Responsive**: Excellent desktop for detailed simulation; mobile-friendly summary views.
-
-### 3.2 Key Views / Components
-- `ParameterControls.tsx` — Controls for blend rules, costs, probabilities, and participation assumptions.
-- `EconomicVisualizer.tsx` — Charts showing costs, participation, reward distribution, and impact over time.
-- `ScenarioComparison.tsx` — Side-by-side comparison of different blend configurations.
-- `InsightsPanel.tsx` — Key insights, risks, and recommendations based on simulation results.
-- `ExportPanel.tsx` — Options to export simulation data and reports.
-
-### 3.3 Accessibility (A11y) & Inclusive Design
-- WCAG 2.2 AA: Clear data visualizations with patterns and text labels, keyboard navigation, high-contrast modes.
-- Screen reader friendly: Structured announcements of key metrics and insights.
-
-### 3.4 Performance & Optimization Targets
-- Lighthouse 95+
-- Fast simulation even with complex parameters
-- Smooth interactive visualizations
-- Efficient handling of multiple scenarios
+After using this blueprint, you will be able to:
+- Model and understand the economics of Atomic Blends
+- Simulate different blend configurations and their impact
+- Design more sustainable and engaging blend systems
+- Make data-informed decisions about blend mechanics
 
 ---
 
-## 4. Technical Architecture
+## 2. Design & Technical Recommendations
 
-### 4.1 Core Tech Stack (Standardized)
-- **Framework:** Next.js 15 (App Router) + TypeScript (strict)
-- **Styling:** Tailwind CSS + shadcn/ui + framer-motion
-- **State & Data:** @tanstack/react-query + zod + Jotai
-- **Simulation Engine:** Client-side economic modeling with customizable parameters
-- **Visualization:** Recharts or custom charts for economic data
-- **Utilities:** date-fns, lucide-react, sonner
+### Recommended Approach
+- Interactive parameter controls with instant visualization updates
+- Clear economic charts and scenario comparison
+- Actionable insights and recommendations
+- Exportable reports for planning and communication
 
-### 4.2 Data Flow Diagram
-```
-Set blend parameters and assumptions
-    ↓
-Run client-side economic simulation
-    ↓
-Visualize costs, participation, and impact
-    ↓
-Compare different scenarios
-    ↓
-Generate insights and export reports
-```
-
-### 4.3 Folder Structure
-```
-app/
-├── (simulator)/
-│   └── page.tsx                 # Main blend economy simulator
-├── components/
-│   ├── simulator/
-│   │   ├── ParameterControls.tsx
-│   │   ├── EconomicVisualizer.tsx
-│   │   ├── ScenarioComparison.tsx
-│   │   ├── InsightsPanel.tsx
-│   │   └── ExportPanel.tsx
-├── hooks/
-│   ├── useBlendSimulation.ts
-│   └── useScenarioComparison.ts
-├── lib/
-│   ├── economy/
-│   │   ├── simulation-engine.ts
-│   │   └── impact-modeler.ts
-│   └── utils.ts
-├── types/
-│   └── blend-economy.ts
-public/
-└── mock-simulations/            # Sample simulation data for demo
-```
-
-### 4.4 Security & Privacy Notes
-- All simulation is client-side
-- Clear disclaimers that simulations are models, not guarantees
-- Focus on helping creators make informed decisions
+### Key Components
+- ParameterControls
+- EconomicVisualizer (charts)
+- ScenarioComparison
+- InsightsPanel
+- ExportPanel
 
 ---
 
-## 5. Implementation Examples & Code Snippets
+## 3. Machine-Optimized Spec (spec.yaml)
 
-### 1. Simulation engine
-```ts
-// lib/economy/simulation-engine.ts
-export function simulateBlendEconomy(params) {
-  // Model costs, participation, reward distribution, and long-term impact
-  return { results, visualizations, insights };
-}
-```
+```yaml
+blueprint:
+  id: wax-blend-economy-simulator
+  tier: 2
+  category: atomic-ecosystem
+  status: alpha-ready
 
-### 2. Visualization
-```tsx
-// Use Recharts or custom components to render economic charts
+features:
+  - interactive_economic_simulation
+  - participation_and_cost_modeling
+  - scenario_comparison
+  - insights_and_recommendations
+  - exportable_reports
+
+machine_instructions:
+  - "Build interactive blend economy simulator with charts"
+  - "Implement participation modeling and scenario comparison"
+  - "Add insights panel with actionable recommendations"
 ```
 
 ---
 
-## 6. Demo & Testing Strategy
+## 4. Implementation Notes
 
-- **Interactive Simulator:** Live parameter adjustment and visualization
-- **Storybook** for controls, charts, comparison
-- **Playwright** e2e: adjust parameters → run simulation → compare scenarios
-- **Vitest** for simulation logic
-- Vercel previews
+Full simulation engine, visualizations, and insights components are committed to the repository.
 
 ---
 
-## 7. Roadmap & Development Phases
+## 5. Ecosystem Position
 
-**Phase 0 — Scaffold (1 day)**
-- Next.js + Tailwind + basic simulator structure
-
-**Phase 1 — Core Logic (5 days)**
-- Economic modeling engine, participation curves, impact analysis
-
-**Phase 2 — Core UI (4 days)**
-- Parameter controls, visualizations, scenario comparison, insights
-
-**Phase 3 — Polish (2 days)**
-- Performance, a11y, responsive, beautiful data presentation
-
-**Phase 4 — Documentation & Release (2 days)**
-- Full README, screenshots, AI prompt pack, make public
-
-**Future Enhancements**
-- Integration with blends creator tool
-- Monte Carlo simulations for uncertainty
-- Community-contributed economic models
-- Export to spreadsheets and reports
+Direct companion to `wax-blends-creator-and-visualizer` and other Atomic economy/gamification tools. Essential for sustainable blend design on WAX.
 
 ---
 
-## 8. Visual References & Mockups
+## 6. License & Credits
 
-**Key Screen:**
-Clean simulator with parameter controls on the left. Large central area with charts showing costs, participation over time, and reward distribution. Right sidebar for scenario comparison and key insights. Professional economic modeling aesthetic.
+MIT License — Built with ❤️ for better understanding of blend economics on WAX.
+Pixel Journey — Beautiful interfaces for public blockchain data.
 
-> *Feels like a premium economic modeling tool meets calm Web3 interface — insightful and actionable.*
-
-**ASCII Sketch:**
-```
-[ Blend Parameters ]
-Input Cost | Probability | Participation Rate
-
-     Economic Charts
-Costs over time | Participation curve | Impact metrics
-
-[ Compare Scenarios ] [ Export Report ]
-```
-
----
-
-## 9. Related Blueprints & Ecosystem Fit
-
-- Direct companion to `wax-blends-creator-and-visualizer` and other Atomic tools.
-- Supports sustainable design of Atomic-based projects.
-- Excellent for creators planning long-term economics.
-
----
-
-## 10. License, Contributing & Credits
-
-- MIT License
-- Built with ❤️ for better understanding of blend economics on WAX
-- Uses client-side simulation and Pixel Journey Design System
-- Special thanks to the focus on Atomic ecosystem depth
-
-**This blueprint helps creators design more sustainable and successful blend mechanics.**
-
-*Pixel Journey — Beautiful interfaces for public blockchain data.*
-
----
-
-*Last updated: July 02, 2026*
+*Last updated: July 02, 2026 — Deep Refinement Pass*
