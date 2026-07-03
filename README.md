@@ -121,9 +121,16 @@ After studying this repository, you should be able to:
 - Provide actionable insights, not just raw numbers
 - Revisit models after launch with real data
 
+### Anti-Patterns to Avoid
+- Launching without economic modeling
+- Overly optimistic assumptions
+- Poor communication of economic impact
+
 ---
 
 ## 5. Code Examples
+
+Real component examples are available in the `/examples` folder (to be expanded).
 
 ### Simple Economic Calculation (conceptual)
 
