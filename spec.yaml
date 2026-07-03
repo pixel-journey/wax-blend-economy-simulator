@@ -4,12 +4,13 @@ blueprint:
   tier: 2
   category: atomic-ecosystem
   status: in-development
-  version: 0.2
+  version: 0.3
 
 metadata:
   description: |
     A high-quality reference for modeling the economics of Atomic Blends on WAX,
     including costs, participation, reward distribution, and long-term sustainability.
+    Helps creators design more sustainable and data-informed blend systems.
   target_audience:
     - Human developers and creators designing blend systems
     - AI agents generating economic modeling tools
@@ -34,20 +35,22 @@ integration_levels:
     description: Full interactive simulator + insights + scenario comparison
     recommended_for: Most production planning use cases
   advanced:
-    description: Advanced modeling, batch simulation, creator analytics
+    description: Advanced modeling, batch simulation, creator analytics, sensitivity analysis
     recommended_for: Complex economies or serious planning tools
 
 machine_instructions:
   - |
-    Build interactive blend economy simulator with clear charts and controls.
+    Build interactive blend economy simulator with clear charts, parameter controls, and real-time updates.
   - |
-    Implement participation modeling and scenario comparison tools.
+    Implement participation modeling, cost/value calculations, and scenario comparison tools.
   - |
-    Add insights panel with actionable recommendations.
+    Create an insights panel that generates actionable recommendations based on simulation results.
   - |
-    Support multiple integration levels with progressive depth.
+    Support multiple integration levels with progressive depth (minimal → recommended → advanced).
   - |
-    Emphasize sustainable and data-informed blend design.
+    Emphasize sustainable, transparent, and data-informed blend design.
+  - |
+    Make results easy to export and share for planning and stakeholder communication.
 
 technical_requirements:
   framework: Next.js 15 + TypeScript (strict)
@@ -57,15 +60,18 @@ technical_requirements:
   design_system: pixel-journey-design-system
 
 best_practices:
-  - Always model multiple scenarios before launching
-  - Be transparent about economic assumptions
-  - Use visualizations to communicate impact
-  - Test edge cases thoroughly
-  - Provide actionable insights, not just raw data
-  - Revisit models after launch with real data
+  - Always model multiple scenarios before launching a blend
+  - Be transparent about economic assumptions and limitations
+  - Use visualizations to communicate impact clearly to stakeholders
+  - Test edge cases thoroughly (low/high participation, extreme costs)
+  - Provide actionable insights, not just raw numbers
+  - Revisit and refine models after launch with real data
+  - Keep simulation logic pure and testable (client-side first)
 
 future_extensions:
-  - Advanced dynamic economic modeling
-  - Cross-blend economic impact analysis
+  - Advanced dynamic economic modeling (inflation, long-term projections)
+  - Cross-blend and portfolio-level economic impact analysis
   - Creator analytics and forecasting dashboards
-  - Integration with live on-chain data
+  - Integration with live on-chain data after launch
+  - Sensitivity analysis and Monte Carlo simulations
+  - Export to PDF, Notion, or Google Sheets
