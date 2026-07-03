@@ -41,8 +41,7 @@ This repository includes a dedicated `/examples` folder with production-ready co
 - `ParameterControls.tsx` — Reusable controls for simulation parameters
 - `ScenarioComparison.tsx` — Side-by-side scenario comparison
 - `InsightsPanel.tsx` — Actionable insights and recommendations
-
-More components (export tools, advanced modeling) will be added.
+- `demo.tsx` — Full composition example showing all components working together
 
 ---
 
@@ -158,6 +157,7 @@ Real component examples are available in the `/examples` folder:
 - `ParameterControls.tsx` — Reusable controls for simulation parameters
 - `ScenarioComparison.tsx` — Side-by-side scenario comparison
 - `InsightsPanel.tsx` — Actionable insights and recommendations
+- `demo.tsx` — Full composition example
 
 ---
 
