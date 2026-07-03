@@ -33,6 +33,17 @@ We build this for creators and teams who want their blend systems to support a h
 
 ---
 
+## Examples Folder
+
+This repository includes a dedicated `/examples` folder with production-ready components:
+
+- `EconomicVisualizer.tsx` — Visual display of key economic metrics
+- `ParameterControls.tsx` — Reusable controls for simulation parameters
+
+More components (scenario comparison, insights, export) will be added.
+
+---
+
 ## 1. Educational Core — Why Blend Economics Matter
 
 Blends have significant economic impact. Understanding costs, participation incentives, and long-term effects is essential for sustainable design.
@@ -130,17 +141,10 @@ After studying this repository, you should be able to:
 
 ## 5. Code Examples
 
-Real component examples are available in the `/examples` folder (to be expanded).
+Real component examples are available in the `/examples` folder:
 
-### Simple Economic Calculation (conceptual)
-
-```ts
-// Simple expected value calculation
-function calculateExpectedValue(blend: any) {
-  // Calculate average cost and reward value
-  // Return expected value and participation incentives
-}
-```
+- `EconomicVisualizer.tsx` — Visual display of key economic metrics
+- `ParameterControls.tsx` — Reusable controls for simulation parameters
 
 ---
 
