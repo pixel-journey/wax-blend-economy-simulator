@@ -40,8 +40,9 @@ This repository includes a dedicated `/examples` folder with production-ready co
 - `EconomicVisualizer.tsx` — Visual display of key economic metrics
 - `ParameterControls.tsx` — Reusable controls for simulation parameters
 - `ScenarioComparison.tsx` — Side-by-side scenario comparison
+- `InsightsPanel.tsx` — Actionable insights and recommendations
 
-More components (insights, export, advanced modeling) will be added.
+More components (export tools, advanced modeling) will be added.
 
 ---
 
@@ -147,6 +148,7 @@ Real component examples are available in the `/examples` folder:
 - `EconomicVisualizer.tsx` — Visual display of key economic metrics
 - `ParameterControls.tsx` — Reusable controls for simulation parameters
 - `ScenarioComparison.tsx` — Side-by-side scenario comparison
+- `InsightsPanel.tsx` — Actionable insights and recommendations
 
 ---
 
