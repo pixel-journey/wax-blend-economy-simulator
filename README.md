@@ -139,6 +139,15 @@ After studying this repository, you should be able to:
 - Overly optimistic assumptions
 - Poor communication of economic impact
 
+### Production Readiness Checklist
+
+- [ ] Clear interactive simulation with real-time visual feedback
+- [ ] Economic calculations are pure and testable
+- [ ] Scenario comparison and insights are actionable
+- [ ] Examples demonstrate component composition
+- [ ] Documentation explains how to adapt to different blend types
+- [ ] Results are easy to export and share
+
 ---
 
 ## 5. Code Examples
@@ -157,10 +166,12 @@ Real component examples are available in the `/examples` folder:
 See `spec.yaml` for structured instructions.
 
 Key instructions:
-- Build interactive blend economy simulator with charts
-- Implement participation modeling and scenario comparison
-- Add insights panel with actionable recommendations
-- Support multiple integration levels
+- Build interactive blend economy simulator with clear charts, parameter controls, and real-time updates.
+- Implement participation modeling, cost/value calculations, and scenario comparison tools.
+- Create an insights panel that generates actionable recommendations based on simulation results.
+- Support multiple integration levels with progressive depth.
+- Emphasize sustainable, transparent, and data-informed blend design.
+- Make results easy to export and share.
 
 ---
 
