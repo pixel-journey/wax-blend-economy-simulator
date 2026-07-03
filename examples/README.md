@@ -14,6 +14,7 @@ See `types.ts` for common interfaces used across the examples.
 | `ParameterControls.tsx`    | Reusable controls for simulation parameters           | Interactive input handling            |
 | `ScenarioComparison.tsx`   | Side-by-side comparison of different scenarios        | Decision making and planning          |
 | `InsightsPanel.tsx`        | Actionable insights and recommendations               | Turning data into guidance            |
+| `demo.tsx`                 | Full composition example                              | Seeing how everything works together  |
 
 ## How to Use
 
