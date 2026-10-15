@@ -3,75 +3,73 @@ blueprint:
   name: Blend Economy Simulator
   tier: 2
   category: atomic-ecosystem
-  status: in-development
-  version: 0.3
+  status: refined
+  version: "0.5.0"
+  last_refined: "2026-10-15"
 
 metadata:
   description: |
-    A high-quality reference for modeling the economics of Atomic Blends on WAX,
-    including costs, participation, reward distribution, and long-term sustainability.
-    Helps creators design more sustainable and data-informed blend systems.
-  target_audience:
-    - Human developers and creators designing blend systems
-    - AI agents generating economic modeling tools
-    - Teams focused on sustainable collection economies on WAX
+    Educational and production-oriented toolkit for modeling Atomic Blend
+    economics on WAX before launch — costs, expected value, participation
+    assumptions, and sustainability heuristics.
   related_blueprints:
     - wax-blends-creator-and-visualizer
     - wax-advanced-drop-mechanics-toolkit
+  foundational_repos:
+    - pixel-journey-standards
+    - pixel-journey-templates
+    - gitbook-docs
+    - wax-ecosystem-blueprint-catalog
+
+modeling_invariants:
+  - All economic math lives in pure functions
+  - Assumptions are parameters, not magic numbers
+  - At least two scenarios should be comparable
+  - Insights cite the metric that triggered them
+  - Simulation output is never presented as guaranteed reality
+  - Accessibility applies to controls and key metrics
 
 features:
-  - interactive_economic_simulation
-  - participation_and_cost_modeling
-  - scenario_comparison
-  - insights_and_recommendations
-  - exportable_reports
-  - multiple_integration_levels
+  implemented:
+    - Pure engines (netMargin, participationPressure, sustainabilityScore, computeMetrics, generateInsights)
+    - EconomicVisualizer
+    - InsightsPanel with trigger-traced recommendations
+    - Supporting examples (ParameterControls, ScenarioComparison, ExportPanel, demo)
+  planned:
+    - Richer multi-recipe portfolio models
+    - Time-series participation decay
+    - Live supply data hooks
 
 integration_levels:
   minimal:
-    description: Basic parameter controls + simple charts
-    recommended_for: Quick prototypes and learning
+    description: Parameters + basic metrics
   recommended:
-    description: Full interactive simulator + insights + scenario comparison
-    recommended_for: Most production planning use cases
+    description: Full simulator + insights + scenario comparison
   advanced:
-    description: Advanced modeling, batch simulation, creator analytics, sensitivity analysis
-    recommended_for: Complex economies or serious planning tools
+    description: Batch runs, richer models, analytics hooks
 
 machine_instructions:
-  - |
-    Build interactive blend economy simulator with clear charts, parameter controls, and real-time updates.
-  - |
-    Implement participation modeling, cost/value calculations, and scenario comparison tools.
-  - |
-    Create an insights panel that generates actionable recommendations based on simulation results.
-  - |
-    Support multiple integration levels with progressive depth (minimal → recommended → advanced).
-  - |
-    Emphasize sustainable, transparent, and data-informed blend design.
-  - |
-    Make results easy to export and share for planning and stakeholder communication.
+  - Keep all economic math in pure functions under examples/engines.ts
+  - Make assumptions explicit parameters
+  - Prefer actionable insights with clear triggers
+  - Never present simulation output as guaranteed real-world outcomes
+  - Support Minimal / Recommended / Advanced levels
 
 technical_requirements:
   framework: Next.js 15 + TypeScript (strict)
-  styling: Tailwind + shadcn/ui + framer-motion
-  charts: Recharts or custom SVG
-  state: Zustand
-  design_system: pixel-journey-design-system
+  styling: Tailwind CSS
+  simulation: Pure client-side TypeScript engines
 
-best_practices:
-  - Always model multiple scenarios before launching a blend
-  - Be transparent about economic assumptions and limitations
-  - Use visualizations to communicate impact clearly to stakeholders
-  - Test edge cases thoroughly (low/high participation, extreme costs)
-  - Provide actionable insights, not just raw numbers
-  - Revisit and refine models after launch with real data
-  - Keep simulation logic pure and testable (client-side first)
-
-future_extensions:
-  - Advanced dynamic economic modeling (inflation, long-term projections)
-  - Cross-blend and portfolio-level economic impact analysis
-  - Creator analytics and forecasting dashboards
-  - Integration with live on-chain data after launch
-  - Sensitivity analysis and Monte Carlo simulations
-  - Export to PDF, Notion, or Google Sheets
+file_structure:
+  - examples/types.ts
+  - examples/engines.ts
+  - examples/EconomicVisualizer.tsx
+  - examples/InsightsPanel.tsx
+  - examples/ParameterControls.tsx
+  - examples/ScenarioComparison.tsx
+  - examples/ExportPanel.tsx
+  - examples/demo.tsx
+  - ARCHITECTURE.md
+  - README.md
+  - spec.yaml
+  - AI_PROMPTS.md
