@@ -1,49 +1,52 @@
-'use client';
+"use client";
 
-import React from 'react';
+import { useId, useMemo } from "react";
+import { generateInsights } from "./engines";
+import type { EconomicMetrics, Insight } from "./types";
 
-interface InsightsPanelProps {
-  netValue: number;
-  participation: number;
-  sustainabilityScore: number;
+export interface InsightsPanelProps {
+  metrics: EconomicMetrics;
   className?: string;
 }
 
+const toneStyles: Record<Insight["tone"], string> = {
+  positive: "border-emerald-500/30 bg-emerald-500/10 text-emerald-100",
+  warning: "border-amber-500/30 bg-amber-500/10 text-amber-100",
+  negative: "border-red-500/30 bg-red-500/10 text-red-100",
+};
+
 /**
- * Panel showing actionable economic insights and recommendations.
+ * InsightsPanel
+ *
+ * Actionable recommendations derived from pure engines, each citing its trigger metric.
  */
-export function InsightsPanel({
-  netValue,
-  participation,
-  sustainabilityScore,
-  className = '',
-}: InsightsPanelProps) {
-  const getRecommendation = () => {
-    if (netValue < 0) return 'Consider reducing costs or increasing rewards to improve value.';
-    if (participation < 0.3) return 'Low participation — review reward structure and visibility.';
-    if (sustainabilityScore < 60) return 'Sustainability is moderate. Monitor long-term effects.';
-    return 'Looks healthy. Continue monitoring after launch.';
-  };
+export function InsightsPanel({ metrics, className = "" }: InsightsPanelProps) {
+  const headingId = useId();
+  const insights = useMemo(() => generateInsights(metrics), [metrics]);
 
   return (
-    <div className={`rounded-2xl border border-white/10 p-6 ${className}`}>
-      <h3 className="font-semibold mb-4">Insights & Recommendations</h3>
+    <section
+      className={`rounded-2xl border border-white/10 bg-black/20 p-6 ${className}`}
+      aria-labelledby={headingId}
+    >
+      <h3 id={headingId} className="font-semibold text-lg mb-1">
+        Insights & Recommendations
+      </h3>
+      <p className="text-sm text-white/60 mb-5">
+        Decision aids based on the current assumptions — not guarantees.
+      </p>
 
-      <div className="space-y-3 text-sm">
-        <div>
-          <span className="text-muted-foreground">Net Value:</span> {netValue >= 0 ? 'Positive' : 'Negative'}
-        </div>
-        <div>
-          <span className="text-muted-foreground">Participation:</span> {(participation * 100).toFixed(0)}%
-        </div>
-        <div>
-          <span className="text-muted-foreground">Sustainability:</span> {sustainabilityScore}/100
-        </div>
-      </div>
-
-      <div className="mt-4 p-4 bg-white/5 rounded-xl text-sm">
-        <strong>Recommendation:</strong> {getRecommendation()}
-      </div>
-    </div>
+      <ul className="space-y-3">
+        {insights.map((insight) => (
+          <li
+            key={`${insight.trigger}-${insight.message.slice(0, 24)}`}
+            className={`rounded-xl border p-3 text-sm leading-relaxed ${toneStyles[insight.tone]}`}
+          >
+            <p>{insight.message}</p>
+            <p className="mt-1 text-xs opacity-70">Trigger: {insight.trigger}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
