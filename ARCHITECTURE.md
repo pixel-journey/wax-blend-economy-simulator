@@ -1,76 +1,117 @@
 # ARCHITECTURE.md — Blend Economy Simulator
 
-This document describes the technical architecture and design decisions for the Blend Economy Simulator.
+Authoritative technical reference for modeling Atomic Blend economics on WAX.
 
-## Overview
+---
 
-The goal of this blueprint is to provide creators with an interactive, visual way to model the economics of Atomic Blends before launching them. It focuses on costs, expected value, participation dynamics, and long-term sustainability.
+## 1. Design Intent
 
-## Core Principles
+This toolkit helps creators pressure-test blend recipes *before* launch. It prioritizes:
 
-- **Simulation-first**: All economic modeling should run client-side for instant feedback.
-- **Transparency**: Visualizations and insights should make economic assumptions clear.
-- **Actionable**: The simulator should produce recommendations, not just raw numbers.
-- **Scenario-based**: Users should easily compare multiple configurations.
-- **Exportable**: Results should be easy to share and document.
+1. **Explicit assumptions** — every output traces back to visible inputs
+2. **Pure calculation** — economic math is deterministic and testable
+3. **Actionable insight** — recommendations beat raw number dumps
+4. **Scenario thinking** — one happy path is never enough
+5. **Honesty** — simulation is a decision aid, not a prediction of the future
 
-## High-Level Architecture
+---
+
+## 2. Modeling Invariants
+
+| # | Invariant | Rationale |
+|---|-----------|-----------|
+| 1 | All economic math lives in pure functions | Testable, shareable, free of UI side effects |
+| 2 | Assumptions are parameters, not magic numbers | Stakeholders can challenge and adjust them |
+| 3 | At least two scenarios should be comparable | Optimistic-only models hide risk |
+| 4 | Insights cite the metric that triggered them | Trust requires traceability |
+| 5 | Simulation output is never presented as guaranteed reality | Prevents false confidence |
+| 6 | Accessibility applies to controls and key metrics | Decision tools must be usable |
+
+---
+
+## 3. High-Level Architecture
 
 ```
-User Interface (Next.js + Tailwind + shadcn/ui)
-          │
-          ▼
-Parameter Controls (interactive inputs)
-          │
-          ▼
-Simulation Engine (pure client-side calculations)
-          │
-          ▼
-Visualization Layer (charts + metrics)
-          │
-          ▼
-Insights & Recommendations Engine
-          │
-          ▼
-Scenario Comparison + Export
+ParameterControls  →  Pure Engines  →  EconomicVisualizer
+                           ↓
+                   ScenarioComparison
+                           ↓
+                     InsightsPanel
+                           ↓
+                      ExportPanel
 ```
 
-## Key Components
+Everything above the engines is presentation. Everything inside the engines is pure.
 
-| Component                  | Responsibility                                      | Key Technologies             |
-|----------------------------|-----------------------------------------------------|------------------------------|
-| `ParameterControls`        | User-adjustable blend parameters                    | React controlled inputs      |
-| `EconomicVisualizer`       | Display of cost, value, participation metrics       | React + simple calculations  |
-| `ScenarioComparison`       | Side-by-side comparison of different configurations | Table + state management     |
-| `InsightsPanel`            | Actionable recommendations based on simulation      | Rule-based logic + UI        |
-| `demo.tsx`                 | Full composition example                            | All components together      |
+---
 
-## Data Flow
+## 4. Component Contracts
 
-1. User adjusts parameters via `ParameterControls`
-2. Simulation engine recalculates metrics in real time
-3. `EconomicVisualizer` and charts update instantly
-4. `InsightsPanel` generates recommendations
-5. User can compare scenarios or export results
+### ParameterControls
+- Expose cost, reward value, probability, and participation assumptions
+- Emit structured parameter objects the engines can consume
 
-## Simulation vs Real Data
+### engines (pure)
+- `expectedValue(outputs)` — probability-weighted value
+- `netMargin(ev, cost)` — EV minus cost
+- `participationPressure(margin, cost)` — simple heuristic for attractiveness
+- Additional helpers as needed; keep them pure
 
-All calculations are client-side for speed and education. In production tools, these models can be connected to real on-chain data or creator analytics after launch.
+### EconomicVisualizer
+- Display EV, cost, margin, and pressure clearly
+- Tie every number to the current parameter set
 
-## Design Decisions
+### ScenarioComparison
+- Show two (or more) parameter sets side by side
+- Highlight deltas that matter for sustainability
 
-- Pure client-side simulation for instant, free feedback
-- Clear separation between simulation logic and UI
-- Emphasis on actionable insights over raw data
-- Support for scenario comparison as a core feature
-- Simple, extensible component structure
+### InsightsPanel
+- Emit short, actionable recommendations with clear triggers
+- Prefer calm language; avoid alarm without a path forward
 
-## Future Extensions
+### ExportPanel
+- Produce a shareable text/JSON summary of parameters + results
 
-- Advanced economic modeling (inflation curves, long-term projections)
-- Integration with real on-chain data
-- Batch simulation and sensitivity analysis
-- Export to PDF / Notion / Google Sheets
-- Multi-blend portfolio modeling
+---
 
-This architecture prioritizes **speed, clarity, and actionability** so creators can make better-informed decisions about their blend systems.
+## 5. Data Flow
+
+1. User adjusts parameters.
+2. Pure engines recompute EV, margin, and pressure.
+3. Visualizer and insights update live.
+4. User optionally clones a scenario and compares.
+5. User exports a summary for review.
+
+---
+
+## 6. Error & Edge Handling
+
+| Situation | Behavior |
+|-----------|----------|
+| Zero / negative costs | Clamp or flag; do not silently invent numbers |
+| Probabilities not summing near 1 | Surface a note in the UI |
+| Extreme participation assumptions | Still compute; let insights warn |
+| Missing reward values | Show incomplete state, disable weak insights |
+
+---
+
+## 7. Accessibility
+
+- Labeled controls with keyboard support
+- Metrics available as text, not only charts
+- Respect `prefers-reduced-motion`
+
+---
+
+## 8. Extensions
+
+- Multi-recipe portfolio simulation
+- Time-series participation decay models
+- Hooks into real collection supply data
+- Deeper coupling with `wax-blends-creator-and-visualizer`
+
+All extensions must preserve the Modeling Invariants.
+
+---
+
+*Pixel Journey — Beautiful interfaces for public blockchain data.*
