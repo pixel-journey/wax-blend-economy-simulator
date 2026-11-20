@@ -1,7 +1,7 @@
 # A margin from numbers you already have
 
 **Trust label:** `educational-reference`  
-**Catalog:** [wax-ecosystem-blueprint-catalog](https://github.com/pixel-journey/wax-ecosystem-blueprint-catalog)
+**Catalog:** `wax-ecosystem-blueprint-catalog` (private index; not this public course)
 
 `netMargin(10, 4)` is `6`. A positive margin at participation `0.5` scores `85`. Not a blend, and not a forecast.
 
